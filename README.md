@@ -139,7 +139,7 @@ MIT / BSD
 ----------
 **Author**
 
-This role was created by [Chris Sam](www.linkedin.com/in/chris-sam "Chris Sam") for [devopsideas](http://devopsideas.com)
+This role was created by [Chris Sam](https://linkedin.com/in/chris-sam) for [devopsideas](http://devopsideas.com)
 
 
 
