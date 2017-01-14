@@ -19,7 +19,6 @@ install:
   - pip install ansible
 
   # Install docker-py
-  - pip install six==1.10.0
   - pip install docker-py
 
   # Check ansible version
