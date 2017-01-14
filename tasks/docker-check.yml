@@ -1,0 +1,10 @@
+---
+- command: docker -v
+  register: docker_check
+  changed_when: false
+  ignore_errors: true
+
+- name: Check if Docker is installed 
+  fail: msg="Docker is not installed in the server. Install Docker and then re-run this role"
+  when: docker_check|failed
+ 

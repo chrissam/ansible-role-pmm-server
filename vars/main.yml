@@ -1,0 +1,8 @@
+---
+# vars file for pmm
+__pmm_server_version: latest
+__pmm_server_ENABLE_PROTECTION: false
+__pmm_server_ENABLE_SSL: false
+__pmm_server_default_cert: false
+__pmm_server_certificate_path: ""
+__pmm_server_UNINSTALL_PMM: false

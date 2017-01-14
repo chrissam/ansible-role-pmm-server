@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  become: yes
+
+  vars:
+    pmm_server_version: 1.0.7
+    pmm_server_certificate_path: "~/pmm-certs/"
+  
+  roles:
+    - pmm-server

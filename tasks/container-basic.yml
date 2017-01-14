@@ -1,0 +1,12 @@
+---
+- name: Running PMM Data Container without Security ( unprotected )
+  docker:
+    name: pmm-server
+    insecure_registry: true
+    image: "percona/pmm-server:{{ pmm_server_version }}"
+    state: started
+    volumes_from:
+    - pmm-data
+    ports:
+    - "80:80"
+    restart_policy: always

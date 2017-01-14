@@ -1,0 +1,20 @@
+---
+
+- name: Check for emtpy pmm_server_username and pmm_server_password
+  fail: msg="Username or pmm_server_password cannot be empty while enabling pmm_server_password protection"
+  when: ( "{{ pmm_server_username }}" == '' )  or ( "{{ pmm_server_password }}" == '' )
+
+
+- name: Running PMM Data Container secured with pmm_server_username and pmm_server_password
+  docker:
+    name: pmm-server
+    image: "percona/pmm-server:{{ pmm_server_version }}"
+    state: started
+    volumes_from:
+    - pmm-data
+    env: 
+      SERVER_USER: "{{ pmm_server_username }}"
+      SERVER_PASSWORD: "{{ pmm_server_password }}"
+    ports:
+    - "80:80"
+    restart_policy: always

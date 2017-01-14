@@ -1,0 +1,31 @@
+---
+# Variable Configuration
+- name: Define PMM Server version if not defined
+  set_fact:
+    pmm_server_version: "{{ __pmm_server_version }}"
+  when: pmm_server_version is not defined
+
+- name: Define pmm_server_ENABLE_PROTECTION
+  set_fact:
+    pmm_server_ENABLE_PROTECTION: "{{ __pmm_server_ENABLE_PROTECTION }}"
+  when: pmm_server_ENABLE_PROTECTION is not defined
+
+- name: Define pmm_server_ENABLE_SSL
+  set_fact:
+    pmm_server_ENABLE_SSL: "{{ __pmm_server_ENABLE_SSL }}"
+  when: pmm_server_ENABLE_SSL is not defined
+
+- name: Define pmm_server_default_cert
+  set_fact:
+    pmm_server_default_cert: "{{ __pmm_server_default_cert }}"
+  when: pmm_server_default_cert is not defined
+
+- name: Define pmm_server_certificate_path
+  set_fact:
+    pmm_server_certificate_path: "{{ __pmm_server_certificate_path }}"
+  when: pmm_server_certificate_path is not defined
+
+- name: Define pmm_server_UNINSTALL_PMM
+  set_fact:
+    pmm_server_UNINSTALL_PMM: "{{ __pmm_server_UNINSTALL_PMM }}"
+  when: pmm_server_UNINSTALL_PMM is not defined

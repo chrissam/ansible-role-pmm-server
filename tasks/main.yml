@@ -1,0 +1,29 @@
+---
+
+# Check if docker is installed
+- include: docker-check.yml
+
+# Uninstall pmm-server by removing PMM Data Container
+- include: uninstall-pmm-container.yml
+  when: pmm_server_UNINSTALL_PMM
+
+# Variable Configuration
+- include: variables.yml
+- include: sanity-check.yml
+
+# Create PMM Data Container
+- include: create-pmm-container.yml
+  when: not(pmm_server_UNINSTALL_PMM)
+
+# Run PMM Data Container in insecure mode
+- include: container-basic.yml
+  when: "{{ pmm_server_ENABLE_PROTECTION }} == false and {{ pmm_server_ENABLE_SSL }} == false and {{ pmm_server_UNINSTALL_PMM }} == false"
+
+# Run PMM Data Container with userid and password protection
+- include: container-protected.yml
+  when: "{{ pmm_server_ENABLE_PROTECTION }} == true and {{ pmm_server_ENABLE_SSL }} == false and {{ pmm_server_UNINSTALL_PMM }} == false"
+
+# Run PMM Data Container with SSL Enryption only or combined with password protection 
+- include: container-ssl-combined.yml
+  when: not(pmm_server_UNINSTALL_PMM)
+

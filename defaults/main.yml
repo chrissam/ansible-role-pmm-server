@@ -1,0 +1,26 @@
+---
+# PMM server docker image version to be installed
+pmm_server_version: 1.0.7
+
+# Enabling Password Protection ( true or false ). Note: If Enabled, username and password details should be provided.
+# If undefined, it is set to true by default
+pmm_server_ENABLE_PROTECTION: true
+
+# User and password information for enabling protection through user authentication
+pmm_server_username: admin
+pmm_server_password: admin
+
+# Enalbe SSL Encryption ( true or false ). If undefined, it is set to true by default.
+pmm_server_ENABLE_SSL: true
+
+# Use self signed certificate for SSL ( true or false ). If undefined, it is set to false by default.
+pmm_server_default_cert: true
+
+# Path for SSL files. Leave this empty if you have placed the certificate and key withtin the files directory of the role.
+# Note: If specifying a custom path, don't forget to include the trailing slash in the path ( Eg: /path/to/file/ )
+# Warning: Only specify the path and not the file name. The name of the key and certificate file should be "server.key and server.crt"
+
+pmm_server_certificate_path: ""
+
+# Set this to true if you want to uninstall PMM server. If undefined, it is set to false by default.
+pmm_server_UNINSTALL_PMM: false

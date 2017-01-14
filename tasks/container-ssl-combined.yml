@@ -1,0 +1,72 @@
+---
+- name: Creating directory to place SSL keys
+  file: path=/etc/pmm-certs state=directory
+
+- name: Generating default SSL Key 
+  command: "openssl req -x509 -subj '/C=/ST=/L=/O=IT/CN={{ansible_fqdn}}' -nodes -days 3650 -newkey rsa:2048 -keyout /etc/pmm-certs/server.key -out /etc/pmm-certs/server.crt creates=/etc/pmm-certs/server.crt"
+  when: "{{ pmm_server_default_cert }} == true"
+
+- name: Copying custom certificate files to remote.
+  copy:
+    src: "{{ pmm_server_certificate_path }}{{ item }}"
+    dest: /etc/pmm-certs/
+    mode: 0644
+  with_items:
+    - server.key
+    - server.crt
+  when: "{{ pmm_server_default_cert }} == false"
+
+- name: Verifying if cert file exists
+  stat: path=/etc/pmm-certs/server.crt
+  register: cert_file
+
+- name: Verifying if key file exists
+  stat: path=/etc/pmm-certs/server.key
+  register: key_file 
+
+- name: Running PMM Data Container with SSL Encryption
+  docker:
+    name: pmm-server
+    image: "percona/pmm-server:{{ pmm_server_version }}"
+    state: started
+    volumes:
+    - /etc/pmm-certs:/etc/nginx/ssl
+    volumes_from:
+    - pmm-data
+    ports:
+    - "80:80"
+    - "443:443"
+    restart_policy: always
+  when:
+    - "{{ pmm_server_ENABLE_PROTECTION }} == false"
+    - "{{ pmm_server_ENABLE_SSL }} == true"
+    - cert_file.stat.exists == True
+    - key_file.stat.exists == True
+
+
+- name: Check for emtpy pmm_server_username and pmm_server_password
+  fail: msg="Username or pmm_server_password cannot be empty while enabling pmm_server_password protection"
+  when: ( "{{ pmm_server_username }}" == '' )  or ( "{{ pmm_server_password }}" == '' )
+
+
+- name: Running PMM Data Container with both SSL Encryption and pmm_server_password protection
+  docker:
+    name: pmm-server
+    image: "percona/pmm-server:{{ pmm_server_version }}"
+    state: started
+    volumes:
+    - /etc/pmm-certs:/etc/nginx/ssl
+    volumes_from:
+    - pmm-data
+    env:
+      SERVER_USER: "{{ pmm_server_username }}"
+      SERVER_PASSWORD: "{{ pmm_server_password }}"
+    ports:
+    - "80:80"
+    - "443:443"
+    restart_policy: always
+  when:
+    - "{{ pmm_server_ENABLE_PROTECTION }} == true"
+    - "{{ pmm_server_ENABLE_SSL }} == true"
+    - cert_file.stat.exists == True
+    - key_file.stat.exists == True
