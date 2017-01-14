@@ -1,10 +1,10 @@
 ---
 - hosts: localhost
-  become: yes
+  remote_user: root
 
   vars:
     pmm_server_version: 1.0.7
-    pmm_server_certificate_path: "~/pmm-certs/"
+    pmm_server_default_cert: true
   
   roles:
     - pmm-server

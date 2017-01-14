@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
+  remote_user: root
 
   vars:
     pmm_server_UNINSTALL_PMM: true
