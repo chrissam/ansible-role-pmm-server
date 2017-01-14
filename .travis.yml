@@ -11,6 +11,9 @@ addons:
     packages:
     - python-pip
 
+services:
+  - docker
+
 install:
   # Install ansible
   - pip install ansible
