@@ -3,7 +3,7 @@ language: python
 python: "2.7"
 
 # Use the new container infrastructure
-sudo: false
+sudo: yes
 
 # Install ansible
 addons:
@@ -17,10 +17,13 @@ install:
   - pip install ansible
 
   # Install docker-py
-  - pip install docker-py==1.2.3
+  - pip install docker-py
 
   # Check ansible version
   - ansible --version
+
+  # Source python virtualenv
+  - source ~/virtualenv/python2.7/bin/activate
 
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' >ansible.cfg
