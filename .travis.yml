@@ -18,6 +18,9 @@ install:
   # Install ansible
   - pip install ansible
 
+  # Install docker-py
+  - pip install docker-py
+
   # Check ansible version
   - ansible --version
 
