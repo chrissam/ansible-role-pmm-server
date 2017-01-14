@@ -7,4 +7,8 @@
 - name: Check if Docker is installed 
   fail: msg="Docker is not installed in the server. Install Docker and then re-run this role"
   when: docker_check|failed
- 
+
+- name: Install docker-py if it is not installed
+  pip:
+    name: docker-py
+    state: present 
