@@ -7,4 +7,4 @@
     pmm_server_default_cert: true
   
   roles:
-    - pmm-server
+    - ansible-role-pmm-server

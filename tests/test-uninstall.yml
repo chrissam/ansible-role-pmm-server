@@ -6,4 +6,5 @@
     pmm_server_UNINSTALL_PMM: true
  
   roles:
-    - pmm-server
+    - ansible-role-pmm-server
+
