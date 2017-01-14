@@ -5,7 +5,6 @@
   vars:
     pmm_server_version: 1.0.7
     pmm_server_default_cert: true
-    ansible_python_interpreter: "/usr/bin/env python"
   
   roles:
     - ansible-role-pmm-server
