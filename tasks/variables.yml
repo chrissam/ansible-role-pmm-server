@@ -29,3 +29,13 @@
   set_fact:
     pmm_server_UNINSTALL_PMM: "{{ __pmm_server_UNINSTALL_PMM }}"
   when: pmm_server_UNINSTALL_PMM is not defined
+
+- name: Define pmm_server_http_port
+  set_fact:
+    pmm_server_http_port: "{{ __pmm_server_http_port }}"
+  when: pmm_server_http_port is not defined
+
+- name: Define pmm_server_https_port
+  set_fact:
+    pmm_server_https_port: "{{ __pmm_server_https_port }}"
+  when: pmm_server_https_port is not defined

@@ -34,8 +34,8 @@
     volumes_from:
     - pmm-data
     ports:
-    - "80:80"
-    - "443:443"
+    - "{{ pmm_server_http_port }}:80"
+    - "{{ pmm_server_https_port }}:443"
     restart_policy: always
   when:
     - "{{ pmm_server_ENABLE_PROTECTION }} == false"
@@ -62,8 +62,8 @@
       SERVER_USER: "{{ pmm_server_username }}"
       SERVER_PASSWORD: "{{ pmm_server_password }}"
     ports:
-    - "80:80"
-    - "443:443"
+    - "{{ pmm_server_http_port }}:80"
+    - "{{ pmm_server_https_port }}:443"
     restart_policy: always
   when:
     - "{{ pmm_server_ENABLE_PROTECTION }} == true"

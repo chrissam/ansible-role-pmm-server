@@ -22,5 +22,9 @@ pmm_server_default_cert: true
 
 pmm_server_certificate_path: ""
 
+# Set custom port numbers if required. Else leave it commented to take default ports ( 80 and 443 )
+#pmm_server_http_port:
+#pmm_server_https_port:
+
 # Set this to true if you want to uninstall PMM server. If undefined, it is set to false by default.
 pmm_server_UNINSTALL_PMM: false

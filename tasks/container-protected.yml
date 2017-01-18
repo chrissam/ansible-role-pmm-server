@@ -16,5 +16,5 @@
       SERVER_USER: "{{ pmm_server_username }}"
       SERVER_PASSWORD: "{{ pmm_server_password }}"
     ports:
-    - "80:80"
+    - "{{ pmm_server_http_port }}:80"
     restart_policy: always

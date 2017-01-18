@@ -6,3 +6,5 @@ __pmm_server_ENABLE_SSL: false
 __pmm_server_default_cert: false
 __pmm_server_certificate_path: ""
 __pmm_server_UNINSTALL_PMM: false
+__pmm_server_http_port: 80
+__pmm_server_https_port: 443
