@@ -8,3 +8,7 @@ __pmm_server_certificate_path: ""
 __pmm_server_UNINSTALL_PMM: false
 __pmm_server_http_port: 80
 __pmm_server_https_port: 443
+__pmm_server_env_defined: 
+  SERVER_USER: "{{ pmm_server_username }}"
+  SERVER_PASSWORD: "{{ pmm_server_password }}"
+__pmm_server_env: "{{ __pmm_server_env_defined | combine(pmm_server_env_custom) }}"

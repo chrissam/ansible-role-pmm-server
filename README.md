@@ -113,6 +113,10 @@ Set this to true if you want to uninstall pmm-server. Other variable options wil
     pmm_server_default_cert: false
     pmm_server_certificate_path: "/path/to/cert/"
 
+***Custom options:***
+
+    pmm_server_env_custom:
+      METRICS_RETENTION: 192h
 
 ----------
 **Example Playbook**
