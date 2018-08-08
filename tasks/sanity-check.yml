@@ -15,4 +15,3 @@
 - name: Sanity cheeck for pmm_server_UNINSTALL_PMM
   fail: msg="Value of pmm_server_UNINSTALL_PMM can only be either true or false"
   when: "(pmm_server_UNINSTALL_PMM != true) and (pmm_server_UNINSTALL_PMM != false)"
-

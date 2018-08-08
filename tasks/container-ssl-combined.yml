@@ -2,7 +2,7 @@
 - name: Creating directory to place SSL keys
   file: path=/etc/pmm-certs state=directory
 
-- name: Generating default SSL Key 
+- name: Generating default SSL Key
   command: "openssl req -x509 -subj '/C=/ST=/L=/O=IT/CN={{ansible_fqdn}}' -nodes -days 3650 -newkey rsa:2048 -keyout /etc/pmm-certs/server.key -out /etc/pmm-certs/server.crt creates=/etc/pmm-certs/server.crt"
   when: "{{ pmm_server_default_cert }} == true"
 
@@ -22,7 +22,7 @@
 
 - name: Verifying if key file exists
   stat: path=/etc/pmm-certs/server.key
-  register: key_file 
+  register: key_file
 
 - name: Running PMM Data Container with SSL Encryption
   docker_container:

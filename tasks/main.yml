@@ -23,7 +23,6 @@
 - include: container-protected.yml
   when: "{{ pmm_server_ENABLE_PROTECTION }} == true and {{ pmm_server_ENABLE_SSL }} == false and {{ pmm_server_UNINSTALL_PMM }} == false"
 
-# Run PMM Data Container with SSL Enryption only or combined with password protection 
+# Run PMM Data Container with SSL Enryption only or combined with password protection
 - include: container-ssl-combined.yml
   when: not(pmm_server_UNINSTALL_PMM)
-

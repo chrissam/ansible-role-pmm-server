@@ -7,4 +7,3 @@
  
   roles:
     - ansible-role-pmm-server
-
