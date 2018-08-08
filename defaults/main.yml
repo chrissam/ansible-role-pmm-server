@@ -26,5 +26,8 @@ pmm_server_certificate_path: ""
 #pmm_server_http_port:
 #pmm_server_https_port:
 
+# Set custom env for additional options
+pmm_server_env_custom: {}
+
 # Set this to true if you want to uninstall PMM server. If undefined, it is set to false by default.
 pmm_server_UNINSTALL_PMM: false

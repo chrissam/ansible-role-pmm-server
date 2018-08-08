@@ -1,6 +1,6 @@
 ---
 - name: Creating PMM Data Container
-  docker:
+  docker_container:
     name: pmm-data
     image: "percona/pmm-server:{{ pmm_server_version }}"
     state: present

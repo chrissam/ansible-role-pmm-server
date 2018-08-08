@@ -25,7 +25,7 @@
   register: key_file 
 
 - name: Running PMM Data Container with SSL Encryption
-  docker:
+  docker_container:
     name: pmm-server
     image: "percona/pmm-server:{{ pmm_server_version }}"
     state: started
@@ -50,7 +50,7 @@
 
 
 - name: Running PMM Data Container with both SSL Encryption and pmm_server_password protection
-  docker:
+  docker_container:
     name: pmm-server
     image: "percona/pmm-server:{{ pmm_server_version }}"
     state: started

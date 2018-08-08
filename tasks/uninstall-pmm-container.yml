@@ -1,6 +1,6 @@
 ---
 - name: Uninstalling PMM Data Container
-  docker:
+  docker_container:
     name: pmm-server
     image: "percona/pmm-server:{{ pmm_server_version }}"
     state: absent
